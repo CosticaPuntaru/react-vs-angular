@@ -2,20 +2,20 @@
 
 ## uni directional data flow (flow): 
 
-![uni directional data flow](https://raw.githubusercontent.com/facebook/flux/master/docs/img/flux-diagram-white-background.png =400x200 "uni directional data flow")
+![](https://raw.githubusercontent.com/facebook/flux/master/docs/img/flux-diagram-white-background.png)
 
 
 
 ## mvvm 
 
-![mvvm data flow](https://www.objc.io/images/issue-13/mvvm1-16d81619.png =400x200 "mvvm data flow")
+![](https://www.objc.io/images/issue-13/mvvm1-16d81619.png)
 
 
 
 
 ## lets take a simple example
 
-![mvvm data flow](./data-flow.png =400x300 "mvvm data flow")
+![](./data-flow.png)
 
 given the above example, we want to make a webpage, when we click the button, a request to the server with its id, the server respondes with the update counter and the view needs to render it
 
