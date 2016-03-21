@@ -26,7 +26,7 @@
 
 !(./data-flow.png)
 
-given the above example, we want to make a webpage, when we click the button, a request to the server with its id, the server respondes with the update counter and the view needs to render it
+given the above example, we want to make a webpage, when we click the button, a request to the server with its id, the server responds with the update counter and the view needs to render it
 
 ### uni directional:
 1. button1 clicked
