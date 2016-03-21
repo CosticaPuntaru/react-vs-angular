@@ -1,21 +1,30 @@
+
+# Motivation, what it is and what is not, background.
+ - i'm not an article writer, i'm not the best english spicker.
+ - i have a year playing with react and one year with angular (give or take)  
+ - This is a talk about the bad parts of the react (i know it may have good parts to)
+ - yes angular have bad parts to(this talk is not about them)
+ - this talk tryes to highlight why react is not the always the best answer,
+
+
 # data flow
 
 ## uni directional data flow (flow): 
 
-![](https://raw.githubusercontent.com/facebook/flux/master/docs/img/flux-diagram-white-background.png)
+!(https://raw.githubusercontent.com/facebook/flux/master/docs/img/flux-diagram-white-background.png)
 
 
 
 ## mvvm 
 
-![](https://www.objc.io/images/issue-13/mvvm1-16d81619.png)
+!(https://www.objc.io/images/issue-13/mvvm1-16d81619.png)
 
-
+**Note:** the fallowing data flow is what a developer should be aware of, its not 100% what happends but is what developers sees from it.
 
 
 ## lets take a simple example
 
-![](./data-flow.png)
+!(./data-flow.png)
 
 given the above example, we want to make a webpage, when we click the button, a request to the server with its id, the server respondes with the update counter and the view needs to render it
 
@@ -97,6 +106,7 @@ Window.ApiEndpoint = 'https://localhost:3001/';
 		MyApiProvider.setEndPointUrl('https://localhost:3001/')
 	});
 ```
+using angular's constants makes this even better
 
 **notes**:
 i asked Dragos for a article of why global variables are bad, answered:
@@ -119,9 +129,6 @@ jsx puts together in the same file the logic of the controller and the html temp
 - more devtools, more webpack loaders, more black boxes that you need to be afraid of 
 
 
-
-
-
 ## directives (don not get them confused with components)
 **Scenario**: we have finished mylocal-hq, all works perfectly, now we want/need to gather info about user behaviors to see what we can improve and what user uses more.
 
@@ -136,11 +143,15 @@ use the steps found at #data flow to send the data to the server
 ex:
 
 ```html
+
 	<button type='submit' my-analitycs>send</button>
+	
 ```
 
 ```html
+
 	<a href='/something/' my-analitycs> some link</a>
+	
 ```
 
 
@@ -170,7 +181,6 @@ angular.module('myApp')
       },
       controller: ($scope, $element) => {
         $element.onClick = () => {
-          "use strict";
           analyticsService.send($scope.myAnalytics)
         }
       }
@@ -178,6 +188,25 @@ angular.module('myApp')
   });
 
 ```
+
+using es6
+
+```javascript
+class MyDirective {
+    constructor(analyticsService) {
+        this.restrict = 'A';        
+        this.analyticsService = analyticsService;
+    }
+
+    onClick(element) {
+        this.analyticsService.send(element.attr('my-analytics'));
+    }
+}
+
+register('app').directive('myDirective', MyDirective);
+```
+I don't think this can be closer to my wet dreams....
+
 ## react
 
 
@@ -237,8 +266,10 @@ export default class Button extends Component {
 ### Angular2 uses typescript and its blablabla
 
 typescript = es7 + flow type + some oop sugar like interface and private stuff
-none will end up in production, none will slow down your app in production, 
-all are well known standards for any programmer 
+
+none: will not end up in production, 
+
+none will slow down your app in production, all are well known standards for any programmer 
 
 you can create a full big application with or without typescript
 you can create a full big application with or without es6
@@ -248,7 +279,7 @@ http://nicholasjohnson.com/blog/how-to-do-everything-in-angular2-using-es6/
 
 
 react uses jsx, is a something invented and only used by react, its not an open standard
-if you try to write a component without jsx
+if you try to write a component without jsx and es6
 
 ```javascript
 var React = require('react/addons');
@@ -340,5 +371,35 @@ Keep in mind that most of the applications will only update a thing after a user
 - 86,974 websites using react https://wappalyzer.com/applications/react
 
 
+# Other complains 
 
+- Why there is so much hipe
+- Why so much boilerplate
+- Why so many function bindings
+- Why is so different from the way i was use to interact with the browser
+- why modifier components? (aka directive)
+- why dose the shouldComponentUpdate exists if the template gives the exact used props?
+
+# my conclusions
+
+There will never be a "the best framework" the internet is to vast and to complex to be able to be built with one tool and one tool only, not even Java can do that (contrary to java devs believes)
+
+## my optinions
+### react
+- is good for medium sized apps, or realy update intensive apps. 
+- it takes more dev time to build apps
+- harder to debug
+- harder to brake in to reusable components
+- easy to learn hard to master
+- React dose no't use any concepts that we are familiar with.(you may say that is functional but is not) 
+- complex ecosystem 
+
+### angular
+- good for medium/large apps
+- wierd learning curve (don't confuse it with hard), easyer to master
+- better componentization
+- a more complete tool kit
+- uses more better known standards.
+- better flexibility
+- closer to the code a js dev is use to
 
