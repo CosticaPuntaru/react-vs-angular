@@ -3,8 +3,8 @@
  - i'm not an article writer, i'm not the best english speaker.
  - i have a year playing with react and one year with angular (give or take)  
  - This is a talk about the bad parts of the react (i know it may have good parts to)
- - yes angular have bad parts to(this talk is not about them)
- - this talk tryes to highlight why react is not the always the best answer,
+ - yes angular has bad parts to(this talk is not about them)
+ - this talk tries to highlight why react is not always the best solution,
 
 
 # data flow
