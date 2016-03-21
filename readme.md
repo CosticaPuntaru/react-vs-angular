@@ -86,7 +86,7 @@ given the above example, we want to make a webpage, when we click the button, a 
 9. view gets updated
 
 
-**notes**:
+**Notes**:
 in mvvm only the service and the components that are needed knows of the click
 
 # Provider config vs global constants
@@ -108,8 +108,8 @@ Window.ApiEndpoint = 'https://localhost:3001/';
 ```
 using angular's constants makes this even better
 
-**notes**:
-i asked Dragos for a article of why global variables are bad, answered:
+**Notes**:
+i asked Dragos for an article of why global variables are bad, answered:
 - Do i really need to give you that?
 
 angular dose not use any globals, and you can even set it async.
