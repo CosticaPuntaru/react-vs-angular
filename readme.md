@@ -393,15 +393,16 @@ There will never be a "the best framework" the internet is to vast and to comple
 - harder to debug
 - harder to brake in to reusable components
 - easy to learn hard to master
-- React dose not use any concepts that we are familiar with.(you may say that is functional but is not) 
+- React does not use any concepts that we are familiar with(you may say that it uses some 
+FP concepts but in reality, this is just a hype) 
 - complex ecosystem 
 
 ### angular
 - good for medium/large apps
-- wierd learning curve (don't confuse it with hard), easyer to master
+- weird learning curve (don't confuse it with hard), easier to master
 - better componentization
 - a more complete tool kit
-- uses more better known standards.
+- uses more better known standards
 - better flexibility
-- closer to the code a js dev is use to
+- closer to the code/concepts a js dev is used to
 
