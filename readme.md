@@ -11,20 +11,20 @@
 
 ## uni directional data flow (flow): 
 
-!(https://raw.githubusercontent.com/facebook/flux/master/docs/img/flux-diagram-white-background.png)
+![](https://raw.githubusercontent.com/facebook/flux/master/docs/img/flux-diagram-white-background.png)
 
 
 
 ## mvvm 
 
-!(https://www.objc.io/images/issue-13/mvvm1-16d81619.png)
+![](https://www.objc.io/images/issue-13/mvvm1-16d81619.png)
 
 **Note:** the fallowing data flow is what a developer should be aware of, its not 100% what happends but is what developers sees from it.
 
 
 ## lets take a simple example
 
-!(./data-flow.png)
+![](./data-flow.png)
 
 given the above example, we want to make a webpage, when we click the button, a request to the server with its id, the server responds with the update counter and the view needs to render it
 
