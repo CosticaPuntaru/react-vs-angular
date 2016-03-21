@@ -373,13 +373,13 @@ Keep in mind that most of the applications will only update a thing after a user
 - 86,974 websites using react https://wappalyzer.com/applications/react
 
 
-# Other complains 
+# Other complaints 
 
-- Why there is so much hipe
-- Why so much boilerplate
-- Why so many function bindings
-- Why is so different from the way i was use to interact with the browser
-- why modifier components? (aka directive)
+- Why there is so much hipe?
+- Why so much boilerplate?
+- Why so many function bindings?
+- Why is so different from the way i was use to interact with the browser?
+- why modifier components? (aka directive)?
 - why dose the shouldComponentUpdate exists if the template gives the exact used props?
 
 # my conclusions
