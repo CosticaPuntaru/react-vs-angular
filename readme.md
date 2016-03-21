@@ -1,6 +1,6 @@
 
 # Motivation, what it is and what is not, background.
- - i'm not an article writer, i'm not the best english spicker.
+ - i'm not an article writer, i'm not the best english speaker.
  - i have a year playing with react and one year with angular (give or take)  
  - This is a talk about the bad parts of the react (i know it may have good parts to)
  - yes angular have bad parts to(this talk is not about them)
@@ -384,14 +384,14 @@ Keep in mind that most of the applications will only update a thing after a user
 
 There will never be a "the best framework" the internet is to vast and to complex to be able to be built with one tool and one tool only, not even Java can do that (contrary to java devs believes)
 
-## my optinions
+## my opinions
 ### react
 - is good for medium sized apps, or realy update intensive apps. 
 - it takes more dev time to build apps
 - harder to debug
 - harder to brake in to reusable components
 - easy to learn hard to master
-- React dose no't use any concepts that we are familiar with.(you may say that is functional but is not) 
+- React dose not use any concepts that we are familiar with.(you may say that is functional but is not) 
 - complex ecosystem 
 
 ### angular
