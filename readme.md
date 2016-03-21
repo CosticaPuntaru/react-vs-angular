@@ -210,56 +210,58 @@ I don't think this can be closer to my wet dreams....
 ## react
 
 
-import React, {Component, PropTypes} from 'react';
-import cx from 'classnames';
-import shallowCompare from 'react-addons-shallow-compare';
-import Button from 'views/components/buttons';
-import {connect} from 'react-redux';
-import analytics from 'actions/analytics';
 
+	import React, {Component, PropTypes} from 'react';
+	import cx from 'classnames';
+	import shallowCompare from 'react-addons-shallow-compare';
+	import Button from 'views/components/buttons';
+	import {connect} from 'react-redux';
+	import analytics from 'actions/analytics';
+	
+	
+	@connect(
+	  () => {},
+	  {sendAnalytics: analytics.send}
+	)
+	export default class Button extends Component {
+	
+	  static propTypes = {
+	    children: React.PropTypes.node,
+	    className: React.PropTypes.string,
+	    sendAnalytics: React.PropTypes.func,
+	    myAnalytics: React.PropTypes.object,
+	  };
+	  
+	  constructor(props){
+	    super(props);
+	    this.handleClick = this.onClick.bind(this);
+	  }
+	
+	  onClick() {
+	    this.props.sendAnalytics(this.props.myAnalytics);
+	  }
+	
+	  shouldComponentUpdate(nextProps, nextState) {
+	    return shallowCompare(this, nextProps, nextState);
+	  }
+	
+	  render() {
+	    const {
+	      className,
+	      children,
+	      ...props
+	      } = this.props;
+	
+	    const buttonClasses = cx('Button-analytics', className);
+	
+	    return (
+	      <Button {...props} onClick={this.handleClick} className={buttonClasses} >
+	        {children}
+	      </Button>
+	    );
+	  }
+	}
 
-@connect(
-  () => {},
-  {sendAnalytics: analytics.send}
-)
-export default class Button extends Component {
-
-  static propTypes = {
-    children: React.PropTypes.node,
-    className: React.PropTypes.string,
-    sendAnalytics: React.PropTypes.func,
-    myAnalytics: React.PropTypes.object,
-  };
-  
-  constructor(props){
-    super(props);
-    this.handleClick = this.onClick.bind(this);
-  }
-
-  onClick() {
-    this.props.sendAnalytics(this.props.myAnalytics);
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState);
-  }
-
-  render() {
-    const {
-      className,
-      children,
-      ...props
-      } = this.props;
-
-    const buttonClasses = cx('Button-analytics', className);
-
-    return (
-      <Button {...props} onClick={this.handleClick} className={buttonClasses} >
-        {children}
-      </Button>
-    );
-  }
-}
 
 **NOTE**: angularjs is vanilla js
 
