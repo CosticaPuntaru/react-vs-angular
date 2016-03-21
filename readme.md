@@ -156,14 +156,14 @@ ex:
 
 
 ### React
-Take the button, create a wrapper over it, that gets the click and then do the steps found at #data flow
-Take the dropdown, create a wrapper over it, that gets the click and then do the steps found at #data flow
-Take the dom a element and wait, you can not do that, you need create a new component, then gets the click and then do the steps found at #data flow
+Take the button, create a wrapper over it, that gets the click and then do the steps found at #data flow.
+Take the dropdown, create a wrapper over it, that gets the click and then do the steps found at #data flow.
+Take the dom a element and wait, you cannot do that, you need create a new component, then gets the click and then do the steps found at #data flow.
 
-Replace all the components where needed with the new wrapped component
+Replace all the components that where needed, with the new wrapped component.
 
 
-**Note**: in react if you what to do anything to a dom thingy you need to abstract it under a component and use the component instead, while angular can simply create a attribute directive and add it
+**Note**: in react if you want to do anything to a dom thingy you need to abstract it under a component and use the component instead, while angular can simply create a attribute directive and add it
 
 #lets build the analytics directive
 
