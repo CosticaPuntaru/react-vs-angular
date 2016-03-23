@@ -281,7 +281,7 @@ you can create a full big application with es5, the code will look pritty much a
 http://nicholasjohnson.com/blog/how-to-do-everything-in-angular2-using-es6/
 
 
-react uses jsx, is a something invented and only used by react, its not an open standard
+react uses jsx, is a something created and used only by react, its not an open standard
 if you try to write a component without jsx and es6
 
 ```javascript
@@ -342,14 +342,19 @@ https://gist.github.com/insin/8418675
 
 
 **Note**:
-if you use redux this example is not good, you need to define actions and reducer for each form, and pass all data to the store, the may double the line numbers
+if you use redux, this example is not good bevause you'll need to define actions 
+and reducer/s for each form, passing all the data to the store(that may double the loc's)
 
 ### redux-form
-redux form may handle some of the form boilerplate from you, but is limited, is wierd, and in some cases even stupid, bundles all valitations together, cannot realy use async(server side) validations, 
+redux form may handle some of the form boilerplate from you, but is limited, is wierd 
+and in some cases even stupid - it bundles all the validations together, cannot realy use 
+async(server side) validations, etc
 
 ### validations
+
 #### react
-in react is pritty hard to do validations overall, and the reusability is close to none.
+in react is pretty hard to do validations overall and the reusability is close to none.
+
 example in mylocal-hq:
 
 see the fallowing
@@ -372,7 +377,7 @@ to
 ```
 dose it look familiar? remeber the when we were developing for the browser? that simple html thinghy?
 
-**createing some custom validation?:**
+**creating some custom validation?:**
 
 ```
 app.directive('blacklist', function (){ 
@@ -389,7 +394,8 @@ app.directive('blacklist', function (){
    };
 });
 ```
-reusability? you can stick this dreictive on whatever you want, it just needs a model to bind to (as its clearly specified in the "require" prop)
+reusability? you can stick this directive on whatever you want, it just needs a model 
+to bind to (as its clearly specified in the "require" prop)
 
 
 
