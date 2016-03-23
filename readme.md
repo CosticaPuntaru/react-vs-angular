@@ -1,9 +1,10 @@
 
 # Motivation, what it is and what is not, background.
  - i'm not an article writer, i'm not the best english speaker.
- - i have a year playing with react and one year with angular (give or take)  
+ - i have a ~year playing with react and two? year+ with angular
  - This is a talk about the bad parts of the react (i know it may have good parts to)
  - yes angular has bad parts to(this talk is not about them)
+ - this talk intends to make react look bad!
  - this talk tries to highlight why react is not always the best solution,
 
 
@@ -329,6 +330,69 @@ ReactDOM.render(ui, document.getElementById('react-app'))
 
 ```
 
+## forms (simple contanct form)
+
+### angular
+https://docs.angularjs.org/guide/forms
+- lines of code: 39
+
+### React
+https://gist.github.com/insin/8418675
+- lines of code: 238
+
+
+**Note**:
+if you use redux this example is not good, you need to define actions and reducer for each form, and pass all data to the store, the may double the line numbers
+
+### redux-form
+redux form may handle some of the form boilerplate from you, but is limited, is wierd, and in some cases even stupid, bundles all valitations together, cannot realy use async(server side) validations, 
+
+### validations
+#### react
+in react is pritty hard to do validations overall, and the reusability is close to none.
+example in mylocal-hq:
+
+see the fallowing
+
+app/plugins/digital-dashboards/views/pages/edit.page.jsx#onBoardSave
+app/plugins/digital-dashboards/views/sections/boards.section.jsx#onBoardSave
+app/plugins/digital-dashboards/lib/utils/validator.js
+
+all of these is needed to create a validation, reusing any of this? not a chance
+
+#### angular
+
+as simple as changing:
+```
+ <input type="text" ng-model="name" />
+```
+to
+```
+ <input type="text" ng-model="name" required/>
+```
+dose it look familiar? remeber the when we were developing for the browser? that simple html thinghy?
+
+**createing some custom validation?:**
+
+```
+app.directive('blacklist', function (){ 
+   return {
+   	  restrict: 'A',
+      require: 'ngModel',
+      link: function(scope, elem, attr, ngModel) {
+          ngModel.$parsers.unshift(function(value) {
+          	 var valid =  value == 'angular>react';
+             ngModel.$setValidity('blacklist', valid);
+             return valid ? value : undefined;
+          });
+      }
+   };
+});
+```
+reusability? you can stick this dreictive on whatever you want, it just needs a model to bind to (as its clearly specified in the "require" prop)
+
+
+
 # errors 
 ## react
 ### error 1 (doimb)
@@ -336,6 +400,13 @@ ReactDOM.render(ui, document.getElementById('react-app'))
 
 
 # routers
+
+## react why you no resolve?
+## react why you no partial views ?
+## react why you no reusable controllers/templates
+## react why you no query params?
+## react why you no params type validation
+## angular uses states not paths
 
 # perfs 
 
@@ -361,16 +432,16 @@ Keep in mind that most of the applications will only update a thing after a user
 - 47000+ starts
 - 3200+ watch
 - 22400+ forks
-- 16000 downloads last day
-- 117,756 websites using angularjs https://wappalyzer.com/applications/angularjs
+- 19000+ stuckoverflow followers
+- 117756 websites using angularjs https://wappalyzer.com/applications/angularjs
 
 ## react 
 
 - 38000+ starts
 - 2600+ watch
 - 6300+ forks
-- 54,613 downloads last day
-- 86,974 websites using react https://wappalyzer.com/applications/react
+- 2500+ stuckoverflow followers
+- 86974 websites using react https://wappalyzer.com/applications/react
 
 
 # Other complaints 
@@ -381,6 +452,26 @@ Keep in mind that most of the applications will only update a thing after a user
 - Why is so different from the way i was use to interact with the browser?
 - why modifier components? (aka directive)?
 - why dose the shouldComponentUpdate exists if the template gives the exact used props?
+
+
+# other angular hat tricks
+
+## $delegate
+lets take the fallowing examples:
+
+you just finish up the biggest project ever, but now the PM ask you to add an analytics code to all the forms on the site (milions of them).
+
+### React:
+create a form wrapper component, go to every on of the milions of forms and replace them with the new component
+
+### Angular:
+use $deleget to overwrite the form component with an wrapper over it adding the new functionality
+
+
+another good example is doing ab testing, you can easlity replace old components with new one, without needing to change all your code.
+
+## testing code
+
 
 # my conclusions
 
@@ -405,4 +496,6 @@ FP concepts but in reality, this is just a hype)
 - uses more better known standards
 - better flexibility
 - closer to the code/concepts a js dev is used to
+
+
 
