@@ -1,11 +1,14 @@
 
 # Motivation, what it is and what is not, background.
  - i'm not an article writer, i'm not the best english speaker.
- - i have a ~year playing with react and two? year+ with angular
+ - i have a ~year playing with react and ~two years with angular
  - This is a talk about the bad parts of the react (i know it may have good parts to)
- - yes angular has bad parts to(this talk is not about them)
+ - yes angular has bad parts to, this talk is not about them
  - this talk intends to make react look bad!
  - this talk tries to highlight why react is not always the best solution,
+ - React is a library, angular is a framework?!!  
+ I know!
+ This talk judges the react ecosystem as framework, not only the react itself.
 
 
 # data flow
@@ -15,12 +18,11 @@
 ![](https://raw.githubusercontent.com/facebook/flux/master/docs/img/flux-diagram-white-background.png)
 
 
-
 ## mvvm 
 
 ![](https://www.objc.io/images/issue-13/mvvm1-16d81619.png)
 
-**Note:** the fallowing data flow is what a developer should be aware of, its not 100% what happends but is what developers sees from it.
+**Note:** the following data flow is what a developer should be aware of, its not 100% what happends but is what developers sees from it.
 
 
 ## lets take a simple example
@@ -281,7 +283,7 @@ you can create a full big application with es5, the code will look pritty much a
 http://nicholasjohnson.com/blog/how-to-do-everything-in-angular2-using-es6/
 
 
-react uses jsx, is a something created and used only by react, its not an open standard
+react uses jsx, is a something invented and only used by react, its not an open standard
 if you try to write a component without jsx and es6
 
 ```javascript
@@ -342,22 +344,17 @@ https://gist.github.com/insin/8418675
 
 
 **Note**:
-if you use redux, this example is not good bevause you'll need to define actions 
-and reducer/s for each form, passing all the data to the store(that may double the loc's)
+if you use redux this example is not good, you need to define actions and reducer for each form, and pass all data to the store, the may double the line numbers
 
 ### redux-form
-redux form may handle some of the form boilerplate from you, but is limited, is wierd 
-and in some cases even stupid - it bundles all the validations together, cannot realy use 
-async(server side) validations, etc
+redux form may handle some of the form boilerplate from you, but is limited, is wierd, and in some cases even stupid, bundles all valitations together, cannot realy use async(server side) validations, 
 
 ### validations
-
 #### react
-in react is pretty hard to do validations overall and the reusability is close to none.
-
+in react is pritty hard to do validations overall, and the reusability is close to none.
 example in mylocal-hq:
 
-see the fallowing
+see the following
 
 app/plugins/digital-dashboards/views/pages/edit.page.jsx#onBoardSave
 app/plugins/digital-dashboards/views/sections/boards.section.jsx#onBoardSave
@@ -377,7 +374,7 @@ to
 ```
 dose it look familiar? remeber the when we were developing for the browser? that simple html thinghy?
 
-**creating some custom validation?:**
+**createing some custom validation?:**
 
 ```
 app.directive('blacklist', function (){ 
@@ -394,8 +391,7 @@ app.directive('blacklist', function (){
    };
 });
 ```
-reusability? you can stick this directive on whatever you want, it just needs a model 
-to bind to (as its clearly specified in the "require" prop)
+reusability? you can stick this dreictive on whatever you want, it just needs a model to bind to (as its clearly specified in the "require" prop)
 
 
 
@@ -412,7 +408,59 @@ to bind to (as its clearly specified in the "require" prop)
 ## react why you no reusable controllers/templates
 ## react why you no query params?
 ## react why you no params type validation
-## angular uses states not paths
+## angular uses states not paths+++
+## how should i do routeing???
+
+lets take the fallowing example
+
+```
+<Route path='publishing-platform'>
+	<Route path=':page'>
+		<Route path='edit'>
+		</Route>
+		
+		<Route path='props'>
+		</Route>
+		
+		<Route path='publish'>
+		</Route>
+	</Route>
+</Route>
+
+```
+
+if the id changes, we need to keep the current step but switch to the new id
+
+what i end up doing was:
+
+```
+   const routeFragments = location.pathname.split('/');
+   const lastFragment = routeFragments.pop();
+   this.props.pushState(null, `/publishing-platform/page/${newPage.id}/${lastFragment}`);
+```
+
+
+
+in angular:
+
+`$state.go('page.edit', {pageId: newPage.id});`
+
+
+# other issues i have with react
+## Decorators
+react is using decorators as hacks, decorators were made to enhanche (modify) an existing class, react uses decorator to create a completly new component, this hurts when you are trying to write tests for example, a wrapped component has nothing in common with the component it wraps, that why you are forced to expose both the wrapped component and the unwrapped component. 
+i feel like decorators in react are just to fill th e missing "modifiers components", but it dose it badly.
+
+## shouldComponentUpdate
+why the default shouldComponentUpdate is not the most usefull one.
+if you compile the jsx template to js, it will generate a js like (see jsx vs angular2 typescript above) where it can clearly be seen what props are actualy used, why it can check only those props. 
+Why is not ignoring binded functions by default, it will allow you to bind the functions inplace, and avoid needing to bind function in construction.
+Its ok to have a shouldComponentUpdate for extream fine tooning, but the default behavior should be the one that is good enouth for most apps.
+
+## no template if
+i hate haveing to make a function just to write an if in a template.
+having to use something like `{this.state.video && this.renderPreview(this.state.video)}` makes it even worst
+
 
 # perfs 
 
@@ -463,7 +511,7 @@ Keep in mind that most of the applications will only update a thing after a user
 # other angular hat tricks
 
 ## $delegate
-lets take the fallowing examples:
+lets take the following examples:
 
 you just finish up the biggest project ever, but now the PM ask you to add an analytics code to all the forms on the site (milions of them).
 
